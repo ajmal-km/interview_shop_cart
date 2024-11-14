@@ -55,7 +55,16 @@ class HomeController with ChangeNotifier {
       final endpoint = "https://fakestoreapi.com/products";
       var response = await http.post(
         Uri.parse(endpoint),
+        // 1st method :
         body: productModelToJson(newProduct),
+        // 2nd method :
+        // body: {
+        //     "title": title,
+        //     "price": price,
+        //     "description": description,
+        //     "category": category,
+        //     "rating": {"rate": ratings, "count": ratingCount}
+        //   }
       );
       log(response.reasonPhrase.toString());
       if (response.statusCode >= 200 && response.statusCode <= 299) {
